@@ -27,6 +27,7 @@ class CloudwatchMetricsTarget(object):
     :param refId: target reference id
     :param region: Cloudwatch region
     :param statistics: Cloudwatch mathematic statistic
+    :param statistic: Cloudwatch mathematic statistic
     :param hide: controls if given metric is displayed on visualization
     :param datasource: Grafana datasource name
     """
@@ -41,6 +42,7 @@ class CloudwatchMetricsTarget(object):
     refId = attr.ib(default="")
     region = attr.ib(default="default")
     statistics = attr.ib(default=["Average"], validator=instance_of(list))
+    statistic = attr.ib(default="Average")
     hide = attr.ib(default=False, validator=instance_of(bool))
     datasource = attr.ib(default=None)
 
@@ -58,6 +60,7 @@ class CloudwatchMetricsTarget(object):
             "refId": self.refId,
             "region": self.region,
             "statistics": self.statistics,
+            "statistic": self.statistic,
             "hide": self.hide,
             "datasource": self.datasource,
         }
